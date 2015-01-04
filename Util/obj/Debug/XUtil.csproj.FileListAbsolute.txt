@@ -1,0 +1,5 @@
+C:\Users\macro\git\Util\Util\obj\Debug\XUtil.csprojResolveAssemblyReference.cache
+C:\Users\macro\git\Util\Util\bin\Debug\XUtil.dll
+C:\Users\macro\git\Util\Util\bin\Debug\XUtil.pdb
+C:\Users\macro\git\Util\Util\obj\Debug\XUtil.dll
+C:\Users\macro\git\Util\Util\obj\Debug\XUtil.pdb
