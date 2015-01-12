@@ -1,0 +1,8 @@
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtilTester.exe.config
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtilTester.exe
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtilTester.pdb
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtil.dll
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtil.pdb
+C:\Users\macro\git\Util\XUtilTester\obj\Debug\XUtilTester.csprojResolveAssemblyReference.cache
+C:\Users\macro\git\Util\XUtilTester\obj\Debug\XUtilTester.exe
+C:\Users\macro\git\Util\XUtilTester\obj\Debug\XUtilTester.pdb
