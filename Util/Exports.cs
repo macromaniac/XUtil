@@ -14,6 +14,10 @@ namespace XUtil {
 		public static DirectoryInfo ProjectDirectory() {
 			return Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
 		}
+
+		public static string OutputFromProcess(string fileName, string args) {
+			return ProcessStarter.ProcessOutput(fileName, args);
+		}
 	}
 	public static class ExtensionMethods {
 		//This makes sure that a process dies when the parent process dies

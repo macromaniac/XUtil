@@ -43,6 +43,7 @@
     <Compile Include="Exports.cs" />
     <Compile Include="JobManagement.cs" />
     <Compile Include="KeyboardHook.cs" />
+    <Compile Include="ProcessStarter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
