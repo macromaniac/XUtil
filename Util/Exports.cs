@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace XUtil {
 	public static class Meta {
-		public static string ProjectDirectory() {
-			return Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+		public static DirectoryInfo ProjectDirectory() {
+			return Directory.GetParent(Directory.GetCurrentDirectory()).Parent;
 		}
 	}
 	public static class ExtensionMethods {
@@ -23,6 +24,14 @@ namespace XUtil {
 			j.AddProcess(p.Id);
 		}
 
+		public static KeyboardHook OnGlobalPress
+				(this Keys key, ModifierKeys modKeys, Action action) {
+			KeyboardHook hook = new KeyboardHook();
+			hook.KeyPressed +=
+		 new EventHandler<KeyPressedEventArgs>((sender, keyArgs) => action());
+			hook.RegisterHotKey(modKeys, key);
+			return hook;
+		}
 
 
 	}
