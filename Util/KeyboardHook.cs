@@ -4,6 +4,9 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 namespace XUtil {
+	/// <summary>
+	/// Class used to manage keyboard hooks
+	/// </summary>
 	public sealed class KeyboardHook : IDisposable {
 		// Registers a hot key with Windows.
 		[DllImport("user32.dll")]
@@ -41,7 +44,7 @@ namespace XUtil {
 				}
 			}
 
-			public event EventHandler<KeyPressedEventArgs> KeyPressed;
+			internal event EventHandler<KeyPressedEventArgs> KeyPressed;
 
 			#region IDisposable Members
 
@@ -55,7 +58,7 @@ namespace XUtil {
 		private Window _window = new Window();
 		private int _currentId;
 
-		public KeyboardHook() {
+		internal KeyboardHook() {
 			// register the event of the inner native window.
 			_window.KeyPressed += delegate(object sender, KeyPressedEventArgs args) {
 				if (KeyPressed != null)
@@ -80,10 +83,13 @@ namespace XUtil {
 		/// <summary>
 		/// A hot key has been pressed.
 		/// </summary>
-		public event EventHandler<KeyPressedEventArgs> KeyPressed;
+		internal event EventHandler<KeyPressedEventArgs> KeyPressed;
 
 		#region IDisposable Members
 
+		/// <summary>
+		/// Disposing unregisters all hotkeys
+		/// </summary>
 		public void Dispose() {
 			// unregister all the registered hot keys.
 			for (int i = _currentId; i > 0; i--) {
@@ -100,7 +106,7 @@ namespace XUtil {
 	/// <summary>
 	/// Event Args for the event that is fired after the hot key has been pressed.
 	/// </summary>
-	public class KeyPressedEventArgs : EventArgs {
+	internal class KeyPressedEventArgs : EventArgs {
 		private ModifierKeys _modifier;
 		private Keys _key;
 
@@ -109,11 +115,11 @@ namespace XUtil {
 			_key = key;
 		}
 
-		public ModifierKeys Modifier {
+		internal ModifierKeys Modifier {
 			get { return _modifier; }
 		}
 
-		public Keys Key {
+		internal Keys Key {
 			get { return _key; }
 		}
 	}
@@ -123,9 +129,21 @@ namespace XUtil {
 	/// </summary>
 	[Flags]
 	public enum ModifierKeys : uint {
+		/// <summary>
+		/// Alt key modifier
+		/// </summary>
 		Alt = 1,
+		/// <summary>
+		/// Control key modifier
+		/// </summary>
 		Control = 2,
+		/// <summary>
+		/// Shift key modifier
+		/// </summary>
 		Shift = 4,
+		/// <summary>
+		/// Windows key modifier
+		/// </summary>
 		Win = 8
 	}
 }

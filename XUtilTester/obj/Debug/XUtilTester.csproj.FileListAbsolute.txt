@@ -6,3 +6,6 @@ C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtil.pdb
 C:\Users\macro\git\Util\XUtilTester\obj\Debug\XUtilTester.csprojResolveAssemblyReference.cache
 C:\Users\macro\git\Util\XUtilTester\obj\Debug\XUtilTester.exe
 C:\Users\macro\git\Util\XUtilTester\obj\Debug\XUtilTester.pdb
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\XUtil.xml
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\Newtonsoft.Json.dll
+C:\Users\macro\git\Util\XUtilTester\bin\Debug\Newtonsoft.Json.xml

@@ -9,11 +9,7 @@ using XUtil;
 namespace XUtilTester {
 	class Program {
 		static void Main(string[] args) {
-			string output = XUtil.Meta.OutputFromProcess(
-				"python", @"C:\Users\macro\git\Blocker\BlockerBuild\BlockerBuild.py");
-
-			Console.WriteLine(output);
-			Console.ReadKey();
+			Console.WriteLine(XUtil.Meta.Conf.program_name);
 		}
 	}
 }

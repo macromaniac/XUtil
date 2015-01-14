@@ -31,8 +31,9 @@ namespace XUtil {
 			//path programs would be easy
 			p.StartInfo.UseShellExecute = false;
 			p.StartInfo.RedirectStandardOutput = true;
+			p.StartInfo.RedirectStandardError = true;
 			p.Start();
-			string output = p.StandardOutput.ReadToEnd();
+			string output = p.StandardOutput.ReadToEnd() + p.StandardError.ReadToEnd();
 			p.WaitForExit();
 			return output;
 		}

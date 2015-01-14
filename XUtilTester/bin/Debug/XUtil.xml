@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XUtil</name>
+    </assembly>
+    <members>
+        <member name="T:XUtil.Meta">
+            <summary>
+            Contains functions related to files and processes
+            </summary>
+        </member>
+        <member name="M:XUtil.Meta.ProjectDirectory">
+            <summary>
+            Gets the parent of the current directory. If this is run from
+            debug this will be the project directory. I would use reflection
+            but I don't have the time
+            </summary>
+            <returns>Returns DirectoryInfo of the project assuming you're running in debug/release</returns>
+        </member>
+        <member name="M:XUtil.Meta.OutputFromProcess(System.String,System.String)">
+             <summary>
+             Runs filename, runs PATH/filename if filename is not found.
+             </summary>
+            <returns>returns console output of the process</returns>
+        </member>
+        <member name="P:XUtil.Meta.Conf">
+             <summary>
+            Checks project first, then parent for "Conf.json" file.
+            This dictionary is then cached. Call Conf.variablename to retrieve
+            a variable which you must then cast.
+             </summary>
+        </member>
+        <member name="T:XUtil.ExtensionMethods">
+            <summary>
+            Misc extension methods
+            </summary>
+        </member>
+        <member name="M:XUtil.ExtensionMethods.KillProcessOnExit(System.Diagnostics.Process)">
+            <summary>
+            Kills the process whenver the current process ends.
+            This is useful to prevent processes from running in the
+            background after having started them
+            </summary>
+        </member>
+        <member name="M:XUtil.ExtensionMethods.OnGlobalPress(System.Windows.Forms.Keys,XUtil.ModifierKeys,System.Action)">
+            <summary>
+            This function is called on a global keyboard press. Note that
+            this requires administrator mode on windows 8
+            </summary>
+            <param name="key">Key that triggers action</param>
+            <param name="modKeys">You must specify a modifier key for Global Hotkeys</param>
+            <param name="action"> Action triggered by keypress</param>
+            <returns></returns>
+        </member>
+        <member name="T:XUtil.KeyboardHook">
+            <summary>
+            Class used to manage keyboard hooks
+            </summary>
+        </member>
+        <member name="M:XUtil.KeyboardHook.RegisterHotKey(XUtil.ModifierKeys,System.Windows.Forms.Keys)">
+            <summary>
+            Registers a hot key in the system.
+            </summary>
+            <param name="modifier">The modifiers that are associated with the hot key.</param>
+            <param name="key">The key itself that is associated with the hot key.</param>
+        </member>
+        <member name="M:XUtil.KeyboardHook.Dispose">
+            <summary>
+            Disposing unregisters all hotkeys
+            </summary>
+        </member>
+        <member name="E:XUtil.KeyboardHook.KeyPressed">
+            <summary>
+            A hot key has been pressed.
+            </summary>
+        </member>
+        <member name="T:XUtil.KeyboardHook.Window">
+            <summary>
+            Represents the window that is used internally to get the messages.
+            </summary>
+        </member>
+        <member name="M:XUtil.KeyboardHook.Window.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Overridden to get the notifications.
+            </summary>
+            <param name="m"></param>
+        </member>
+        <member name="T:XUtil.KeyPressedEventArgs">
+            <summary>
+            Event Args for the event that is fired after the hot key has been pressed.
+            </summary>
+        </member>
+        <member name="T:XUtil.ModifierKeys">
+            <summary>
+            The enumeration of possible modifiers.
+            </summary>
+        </member>
+        <member name="F:XUtil.ModifierKeys.Alt">
+            <summary>
+            Alt key modifier
+            </summary>
+        </member>
+        <member name="F:XUtil.ModifierKeys.Control">
+            <summary>
+            Control key modifier
+            </summary>
+        </member>
+        <member name="F:XUtil.ModifierKeys.Shift">
+            <summary>
+            Shift key modifier
+            </summary>
+        </member>
+        <member name="F:XUtil.ModifierKeys.Win">
+            <summary>
+            Windows key modifier
+            </summary>
+        </member>
+    </members>
+</doc>
