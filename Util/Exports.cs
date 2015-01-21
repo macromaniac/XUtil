@@ -15,6 +15,34 @@ namespace XUtil {
 	/// </summary>
 	public static class Meta {
 		/// <summary>
+		/// Finds and returns the file from the current directory or any parent directory, throws
+		/// File Not Found exception if file can't be found
+		/// </summary>
+		/// <param name="filename">The relative filename that we're looking for</param>
+		/// <returns>the full path of the filename</returns>
+		public static string QuickFindFilePath(string filename) {
+			//Get the current directory
+			DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory());
+			//While we aren't at the top directory
+			while (dir.Root.FullName != dir.FullName)
+				if (File.Exists(dir.FullName + @"\" + filename))
+					return dir.FullName + @"\" + filename;
+				else
+					dir = dir.Parent;
+			throw new FileNotFoundException("File " + filename + " was not found in the current," +
+				" or in any parent directories");
+		}
+		/// <summary>
+		/// returns the string of a file at the particular location, strips SIG if it exists
+		/// </summary>
+		/// <param name="fullFilename">the full filename of the file</param>
+		/// <returns>returns the file data as a string</returns>
+		public static string ReadToEndNoBOM(string fullFilename) {
+			using (StreamReader sr = new StreamReader(fullFilename, true))
+				return sr.ReadToEnd();
+			throw new Exception("Could not read file " +fullFilename);
+		}
+		/// <summary>
 		/// Gets the parent of the current directory. If this is run from
 		/// debug this will be the project directory. I would use reflection
 		/// but I don't have the time

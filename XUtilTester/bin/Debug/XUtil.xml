@@ -9,6 +9,21 @@
             Contains functions related to files and processes
             </summary>
         </member>
+        <member name="M:XUtil.Meta.GetFile(System.String)">
+            <summary>
+            Finds and returns the file from the current directory or any parent directory, throws
+            File Not Found exception if file can't be found
+            </summary>
+            <param name="filename">The relative filename that we're looking for</param>
+            <returns>the full path of the filename</returns>
+        </member>
+        <member name="M:XUtil.Meta.ReadToEndNoBOM(System.String)">
+            <summary>
+            returns the string of a file at the particular location, strips SIG if it exists
+            </summary>
+            <param name="fullFilename">the full filename of the file</param>
+            <returns>returns the file data as a string</returns>
+        </member>
         <member name="M:XUtil.Meta.ProjectDirectory">
             <summary>
             Gets the parent of the current directory. If this is run from
@@ -57,23 +72,6 @@
             Class used to manage keyboard hooks
             </summary>
         </member>
-        <member name="M:XUtil.KeyboardHook.RegisterHotKey(XUtil.ModifierKeys,System.Windows.Forms.Keys)">
-            <summary>
-            Registers a hot key in the system.
-            </summary>
-            <param name="modifier">The modifiers that are associated with the hot key.</param>
-            <param name="key">The key itself that is associated with the hot key.</param>
-        </member>
-        <member name="M:XUtil.KeyboardHook.Dispose">
-            <summary>
-            Disposing unregisters all hotkeys
-            </summary>
-        </member>
-        <member name="E:XUtil.KeyboardHook.KeyPressed">
-            <summary>
-            A hot key has been pressed.
-            </summary>
-        </member>
         <member name="T:XUtil.KeyboardHook.Window">
             <summary>
             Represents the window that is used internally to get the messages.
@@ -84,6 +82,23 @@
             Overridden to get the notifications.
             </summary>
             <param name="m"></param>
+        </member>
+        <member name="M:XUtil.KeyboardHook.RegisterHotKey(XUtil.ModifierKeys,System.Windows.Forms.Keys)">
+            <summary>
+            Registers a hot key in the system.
+            </summary>
+            <param name="modifier">The modifiers that are associated with the hot key.</param>
+            <param name="key">The key itself that is associated with the hot key.</param>
+        </member>
+        <member name="E:XUtil.KeyboardHook.KeyPressed">
+            <summary>
+            A hot key has been pressed.
+            </summary>
+        </member>
+        <member name="M:XUtil.KeyboardHook.Dispose">
+            <summary>
+            Disposing unregisters all hotkeys
+            </summary>
         </member>
         <member name="T:XUtil.KeyPressedEventArgs">
             <summary>

@@ -1,0 +1,1 @@
+﻿This file doesn't really matter, just testing for BOM, visual studio saves in utf8 with BOM sig
