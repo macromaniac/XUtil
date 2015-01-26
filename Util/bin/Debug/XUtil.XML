@@ -9,12 +9,35 @@
             Contains functions related to files and processes
             </summary>
         </member>
-        <member name="M:XUtil.Meta.GetFile(System.String)">
+        <member name="M:XUtil.Meta.HideWindow(System.Diagnostics.Process)">
             <summary>
-            Finds and returns the file from the current directory or any parent directory, throws
-            File Not Found exception if file can't be found
+            Hides the window associated with a process, this only works when the project doesn't request focus
             </summary>
-            <param name="filename">The relative filename that we're looking for</param>
+            <param name="p">process that has a window handle that gets hidden</param>
+        </member>
+        <member name="M:XUtil.Meta.ShowWindow(System.Diagnostics.Process)">
+            <summary>
+            Shows the window, used to show windows after they have been hidden using User32
+            </summary>
+            <param name="p">process that has a window handle that gets shown</param>
+        </member>
+        <member name="M:XUtil.Meta.QuickFindFilePath(System.String)">
+            <summary>
+            Finds and returns the full non-relative file name from the current
+             directory or any parent directory, throws FNF exception if 
+            file with name <paramref name="filename"/> can't be found
+            </summary>
+            <param name="filename">The relative name of the file we're looking for</param>
+            <returns>the full path of the filename</returns>
+        </member>
+        <member name="M:XUtil.Meta.FindFileInPathToRoot(System.String,System.String)">
+            <summary>
+            Searches every folder from <paramref name="path"/> up until root looking for the file
+             named <paramref name="filename"/>, this search includes <paramref name="path"/>
+            Returns the full file name. throws exception FNF if file couldn't be found
+            </summary>
+            <param name="path">the path we start looking from</param>
+            <param name="filename">the relative name of the file we're looking for</param>
             <returns>the full path of the filename</returns>
         </member>
         <member name="M:XUtil.Meta.ReadToEndNoBOM(System.String)">

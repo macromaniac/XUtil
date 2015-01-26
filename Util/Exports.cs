@@ -14,15 +14,46 @@ namespace XUtil {
 	/// Contains functions related to files and processes
 	/// </summary>
 	public static class Meta {
+		[DllImport("User32")]
+		private static extern int ShowWindow(int hwnd, int nCmdShow);
+
 		/// <summary>
-		/// Finds and returns the file from the current directory or any parent directory, throws
-		/// File Not Found exception if file can't be found
+		/// Hides the window associated with a process, this only works when the project doesn't request focus
 		/// </summary>
-		/// <param name="filename">The relative filename that we're looking for</param>
+		/// <param name="p">process that has a window handle that gets hidden</param>
+		public static void HideWindow(Process p) {
+			ShowWindow(p.MainWindowHandle.ToInt32(), 6);
+			ShowWindow(p.MainWindowHandle.ToInt32(), 0);
+		}
+		/// <summary>
+		/// Shows the window, used to show windows after they have been hidden using User32
+		/// </summary>
+		/// <param name="p">process that has a window handle that gets shown</param>
+		public static void ShowWindow(Process p) {
+			ShowWindow(p.MainWindowHandle.ToInt32(),5);
+		}
+		/// <summary>
+		/// Finds and returns the full non-relative file name from the current
+		///  directory or any parent directory, throws FNF exception if 
+		/// file with name <paramref name="filename"/> can't be found
+		/// </summary>
+		/// <param name="filename">The relative name of the file we're looking for</param>
 		/// <returns>the full path of the filename</returns>
 		public static string QuickFindFilePath(string filename) {
+			return FindFileInPathToRoot(Directory.GetCurrentDirectory(), filename);
+		}
+
+		/// <summary>
+		/// Searches every folder from <paramref name="path"/> up until root looking for the file
+	 ///  named <paramref name="filename"/>, this search includes <paramref name="path"/>
+		/// Returns the full file name. throws exception FNF if file couldn't be found
+		/// </summary>
+		/// <param name="path">the path we start looking from</param>
+		/// <param name="filename">the relative name of the file we're looking for</param>
+		/// <returns>the full path of the filename</returns>
+		public static string FindFileInPathToRoot(string path, string filename) {
 			//Get the current directory
-			DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory());
+			DirectoryInfo dir = new DirectoryInfo(path);
 			//While we aren't at the top directory
 			while (dir.Root.FullName != dir.FullName)
 				if (File.Exists(dir.FullName + @"\" + filename))
